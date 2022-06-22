@@ -159,7 +159,7 @@ void Steamworks_NetConnection::Callback_ConnectionFailed(P2PSessionConnectFail_t
 	
 	switch (param->m_eP2PSessionError)
 	{
-	case k_EP2PSessionErrorNotRunningApp:
+	case k_EP2PSessionErrorNotRunningApp_DELETED:
 		{
 			Disconnect_Internal(NetConnection_Error::Unavailable, true);
 			break;
@@ -169,7 +169,7 @@ void Steamworks_NetConnection::Callback_ConnectionFailed(P2PSessionConnectFail_t
 			Disconnect_Internal(NetConnection_Error::Unavailable, true);
 			break;
 		}
-	case k_EP2PSessionErrorDestinationNotLoggedIn:
+	case k_EP2PSessionErrorDestinationNotLoggedIn_DELETED:
 		{
 			Disconnect_Internal(NetConnection_Error::Unavailable, true);
 			break;

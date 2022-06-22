@@ -6,7 +6,8 @@
 #include "Engine/Renderer/OpenGL/OpenGL_Texture.h"
 #include "Engine/Renderer/Textures/Pixelmap.h"
 
-#include "libsquish/squish.h"
+//#include <libsquish/squish.h>
+//#include <squish.h>
 
 OpenGL_Texture::OpenGL_Texture(int width, int height, int pitch, TextureFormat::Type format, TextureFlags::Type flags)
 	: Texture(width, height, pitch, format)
