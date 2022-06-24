@@ -23,6 +23,7 @@ add_library(
         Audio/FMod/FMod_SoundFactory.cpp
         Audio/FMod/FMod_SoundFactory.h
 
+        Audio/Null/Null_AudioRenderer.cpp
         Audio/Null/Null_AudioRenderer.h
         Audio/Null/Null_Sound.cpp
         Audio/Null/Null_Sound.h
