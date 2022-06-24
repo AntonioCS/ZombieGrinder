@@ -1,4 +1,4 @@
-project(zombie-grinder-source-engine CXX)
+project(zombie-grinder-source-engine)
 
 find_package(libpng CONFIG REQUIRED)
 find_package(ZLIB REQUIRED)

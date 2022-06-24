@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-project(zombie-grinder-source CXX)
+project(zombie-grinder-source)
 
 #add_subdirectory(Engine)
 add_subdirectory(Generic)

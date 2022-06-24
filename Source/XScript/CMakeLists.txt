@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-project(zombie-grinder-source-xscript CXX)
+project(zombie-grinder-source-xscript)
 
 add_library(
     XScript

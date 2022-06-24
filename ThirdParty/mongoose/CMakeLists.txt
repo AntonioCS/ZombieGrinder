@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-project(zombie-grinder-thirdparty-mongoose CXX)
+project(zombie-grinder-thirdparty-mongoose)
 
 add_library(
     mongoose

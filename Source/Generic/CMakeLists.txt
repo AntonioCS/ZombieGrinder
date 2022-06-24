@@ -1,4 +1,4 @@
-project(zombie-grinder-source-generic CXX)
+project(zombie-grinder-source-generic)
 
 find_package(RapidJSON CONFIG REQUIRED)
 find_path(RAPIDXML_INCLUDE_DIRS "rapidxml/rapidxml.hpp")

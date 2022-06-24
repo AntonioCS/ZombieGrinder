@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-project(zombie-grinder-thirdpart-libtheoraplayer CXX)
+project(zombie-grinder-thirdpart-libtheoraplayer)
 
 add_library(
     libtheoraplayer
