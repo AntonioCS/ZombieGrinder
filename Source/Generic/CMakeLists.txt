@@ -76,20 +76,6 @@ add_library(
         ThirdParty/FMod/fmod_output.h
         ThirdParty/FMod/fmod_common.h
         ThirdParty/FMod/fmod.hpp
-        ThirdParty/FMod/Library/fmod.dll
-        ThirdParty/FMod/Library/fmod64.dll
-        ThirdParty/FMod/Library/fmod64_vc.lib
-        ThirdParty/FMod/Library/fmodL.dll
-        ThirdParty/FMod/Library/fmodL64.dll
-        ThirdParty/FMod/Library/fmodL64_vc.lib
-        ThirdParty/FMod/Library/fmodL_vc.lib
-        ThirdParty/FMod/Library/fmod_vc.lib
-        ThirdParty/FMod/Library/libfmod.a
-        ThirdParty/FMod/Library/libfmod.dylib
-        ThirdParty/FMod/Library/libfmod.so
-        ThirdParty/FMod/Library/libfmodL.a
-        ThirdParty/FMod/Library/libfmodL.dylib
-        ThirdParty/FMod/Library/libfmodL.so
 
         Threads/Fiber.cpp
         Threads/Fiber.h
@@ -222,3 +208,25 @@ target_include_directories(Generic PRIVATE ${RAPIDXML_INCLUDE_DIRS})
 target_link_libraries(Generic PRIVATE ZLIB::ZLIB)
 
 force_include(Generic ${CMAKE_CURRENT_SOURCE_DIR}/Defines.h)
+
+add_library(fmod SHARED IMPORTED)
+set_target_properties(fmod PROPERTIES
+        IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/FMod/Library/fmod.dll
+        IMPORTED_IMPLIB ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/FMod/Library/fmod_vc.lib
+)
+# TODO: platform detection
+
+# ThirdParty/FMod/Library/fmod.dll
+# ThirdParty/FMod/Library/fmod64.dll
+# ThirdParty/FMod/Library/fmod64_vc.lib
+# ThirdParty/FMod/Library/fmodL.dll
+# ThirdParty/FMod/Library/fmodL64.dll
+# ThirdParty/FMod/Library/fmodL64_vc.lib
+# ThirdParty/FMod/Library/libfmod.a
+# ThirdParty/FMod/Library/libfmod.dylib
+# ThirdParty/FMod/Library/libfmod.so
+# ThirdParty/FMod/Library/libfmodL.a
+# ThirdParty/FMod/Library/libfmodL.dylib
+# ThirdParty/FMod/Library/libfmodL.so
+
+target_link_libraries(Generic PRIVATE fmod)
