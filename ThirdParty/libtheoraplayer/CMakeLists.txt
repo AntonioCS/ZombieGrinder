@@ -72,7 +72,9 @@ add_library(
         src/YUV/libyuv/src/x86inc.asm
 )
 
+target_compile_definitions(libtheoraplayer PRIVATE _YUV_C)
 target_include_directories(libtheoraplayer
         PRIVATE include/theoraplayer
         PRIVATE src/YUV/libyuv/include
+        PRIVATE src/YUV
 )
