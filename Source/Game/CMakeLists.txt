@@ -461,4 +461,13 @@ target_link_libraries(
             glad::glad
             steam_api
             sdkencryptedappticket
+            # WinSDK libs
+            DbgHelp
+            Rpcrt4
+            Opengl32
+            Glu32
+            Imm32
+            dinput8
+            Xinput
+            dxguid
 )
