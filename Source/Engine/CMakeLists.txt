@@ -1,4 +1,4 @@
-project(zombie-grinder-source-engine CXX)
+project(zombie-grinder-source-engine)
 
 find_package(libpng CONFIG REQUIRED)
 find_package(ZLIB REQUIRED)
@@ -23,6 +23,7 @@ add_library(
         Audio/FMod/FMod_SoundFactory.cpp
         Audio/FMod/FMod_SoundFactory.h
 
+        Audio/Null/Null_AudioRenderer.cpp
         Audio/Null/Null_AudioRenderer.h
         Audio/Null/Null_Sound.cpp
         Audio/Null/Null_Sound.h

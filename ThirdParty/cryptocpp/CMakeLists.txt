@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-project(zombie-grinder-thirdpart-cryptocpp CXX)
+project(zombie-grinder-thirdpart-cryptocpp)
 
 add_library(
     cryptocpp

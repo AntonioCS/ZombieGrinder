@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-project(zombie-grinder-thirdpart-libtheoraplayer CXX)
+project(zombie-grinder-thirdpart-libtheoraplayer)
 
 add_library(
     libtheoraplayer
@@ -72,7 +72,9 @@ add_library(
         src/YUV/libyuv/src/x86inc.asm
 )
 
+target_compile_definitions(libtheoraplayer PRIVATE _YUV_C)
 target_include_directories(libtheoraplayer
         PRIVATE include/theoraplayer
         PRIVATE src/YUV/libyuv/include
+        PRIVATE src/YUV
 )

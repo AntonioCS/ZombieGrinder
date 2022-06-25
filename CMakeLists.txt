@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 set(VCPKG_TARGET_TRIPLET x86-windows CACHE STRING "")
 
-project(zombie-grinder CXX)
+project(zombie-grinder)
 
 set(CMAKE_CXX_STANDARD 11)
 
