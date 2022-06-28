@@ -7,7 +7,8 @@
 #include "Engine/Renderer/Textures/Pixelmap.h"
 #include "Engine/Renderer/Textures/PixelmapFactory.h"
 
-#include "libpng/png.h"
+//#include "libpng/png.h"
+#include <png.h>
 
 class PNGPixelmapFactory : public PixelmapFactory
 {

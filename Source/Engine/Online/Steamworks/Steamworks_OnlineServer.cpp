@@ -45,7 +45,8 @@ Steamworks_OnlineServer::~Steamworks_OnlineServer()
 
 	if (SteamGameServer())
 	{
-		SteamGameServer()->EnableHeartbeats(false);
+		//SteamGameServer()->EnableHeartbeats(false);
+		SteamGameServer()->SetAdvertiseServerActive(false);
 		SteamGameServer()->LogOff();
 
 		// Wait until we are logged off.
@@ -100,7 +101,15 @@ bool Steamworks_OnlineServer::Init()
 
 	// Initialize steam-server! Wooooo
 	DBG_LOG("[Steam Server] Calling SteamGameServer_Init(%s, %i, %i, %i, %i, %s).", ip, *EngineOptions::server_auth_port, *EngineOptions::server_port, *EngineOptions::server_master_port, mode, (*EngineOptions::server_steam_version).c_str());
-	if (!SteamGameServer_Init(ip, *EngineOptions::server_auth_port, *EngineOptions::server_port, *EngineOptions::server_master_port, mode, (*EngineOptions::server_steam_version).c_str()))
+    //SteamGameServer_Init( uint32 unIP, uint16 usGamePort, uint16 usQueryPort, EServerMode eServerMode, const char *pchVersionString )
+	if (!SteamGameServer_Init(
+            ip,
+            *EngineOptions::server_auth_port,
+            *EngineOptions::server_port,
+            //*EngineOptions::server_master_port,
+            mode,
+            (*EngineOptions::server_steam_version).c_str())
+        )
 	{
 		DBG_LOG("[Steam Server] SteamGameServer_Init(%i, %i, %i, %i, %i, %s) return failure.", ip, *EngineOptions::server_auth_port, *EngineOptions::server_port, *EngineOptions::server_master_port, mode, (*EngineOptions::server_steam_version).c_str());
 		return false;
@@ -119,7 +128,7 @@ bool Steamworks_OnlineServer::Init()
 	SteamGameServer()->LogOnAnonymous();
 
 	// Start headerbeats.
-	SteamGameServer()->EnableHeartbeats(true);
+	SteamGameServer()->SetAdvertiseServerActive(true);
 
 	// Get the temporary steamid (not a universal id until we are logged in)
 	m_server_steamid = SteamGameServer()->GetSteamID();
@@ -289,7 +298,8 @@ std::string Steamworks_OnlineServer::Get_Host_Name()
 {
 	if (m_dedicated == true)
 	{
-		NetAddress address(SteamGameServer()->GetPublicIP(), 0);
+		//NetAddress address(SteamGameServer()->GetPublicIP(), 0);
+		NetAddress address(123, 0);
 		return address.To_String();
 	}
 	else

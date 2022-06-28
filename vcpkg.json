@@ -1,0 +1,20 @@
+{
+	"name": "zombie-grinder",
+	"version-string": "0.1.0-dev",
+	"homepage": "",
+	"description": "",
+	"dependencies": [
+		"opengl",
+		"freeglut",
+		"spdlog",
+		"freetype",
+		"libpng",
+		"libsquish",
+		"libtheora",
+		"libvorbis",
+		"zlib",
+		"rapidjson",
+		"rapidxml",
+		"glad"
+	]
+}

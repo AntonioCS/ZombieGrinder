@@ -65,10 +65,14 @@ void Platform_Print(const char* format, ...)
 	va_list va;
 	va_start(va, format);
 
-	char static_buffer[512];
+    const size_t buffer_size = 1024;
+	//char static_buffer[512];
+	char static_buffer[buffer_size];
 	char* buffer = static_buffer;
-	int num = vsnprintf(buffer, 512, format, va);
-	if (num >= 511)
+	//int num = vsnprintf(buffer, 512, format, va);
+	int num = vsnprintf(buffer, buffer_size, format, va);
+	//if (num >= 511)
+	if (num >= (buffer_size - 1) )
 	{
 		buffer = new char[num + 1];
 		vsnprintf(buffer, num + 1, format, va);
