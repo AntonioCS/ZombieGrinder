@@ -5,7 +5,7 @@
 	"description": "",
 	"dependencies": [
 		"opengl",
-		"glad",
+		"freeglut",
 		"spdlog",
 		"freetype",
 		"libpng",
@@ -14,6 +14,7 @@
 		"libvorbis",
 		"zlib",
 		"rapidjson",
-		"rapidxml"
+		"rapidxml",
+		"glad"
 	]
 }
