@@ -597,16 +597,11 @@ target_link_libraries(
         PRIVATE Vorbis::vorbis Vorbis::vorbisenc Vorbis::vorbisfile
         PRIVATE unofficial::theora::theora unofficial::theora::theoradec unofficial::theora::theoraenc
 
+        PRIVATE glad::glad
+
         PRIVATE Generic
         PRIVATE XScript
         PRIVATE LibGeoIP
         PRIVATE libtheoraplayer
         PRIVATE cryptocpp
 )
-
-#target_link_libraries(Engine PRIVATE png)
-#target_link_libraries(Engine PRIVATE freetype)
-#target_link_libraries(Engine PRIVATE unofficial::libsquish::squish)
-#target_link_libraries(Engine PRIVATE Vorbis::vorbis Vorbis::vorbisenc Vorbis::vorbisfile)
-#target_link_libraries(Engine PRIVATE unofficial::theora::theora unofficial::theora::theoradec unofficial::theora::theoraenc)
-#target_link_libraries(Engine PRIVATE unofficial::mongoose::mongoose)
