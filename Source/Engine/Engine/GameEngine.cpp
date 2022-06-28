@@ -174,7 +174,7 @@ GameEngine::GameEngine(GameRunner* runner, const char* command_line)
 	parser.Parse(command_line);
 
 	// If we are running as a server, force no-gui.
-	if (*EngineOptions::server == true)
+	if (*EngineOptions::server)
 	{
 		DBG_LOG("Running as server, forcing nogui mode.")
 		*EngineOptions::nogui = true;
