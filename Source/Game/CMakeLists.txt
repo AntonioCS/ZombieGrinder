@@ -434,11 +434,18 @@ target_include_directories(
 )
 
 
-add_library(steam_api STATIC IMPORTED)
-add_library(sdkencryptedappticket STATIC IMPORTED)
+add_library(steam_api SHARED IMPORTED)
+add_library(sdkencryptedappticket SHARED IMPORTED)
 
-set_target_properties(steam_api PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.lib)
-set_target_properties(sdkencryptedappticket PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.lib)
+set_target_properties(
+        steam_api PROPERTIES
+        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.dll
+        IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.lib
+)
+set_target_properties(sdkencryptedappticket PROPERTIES
+        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.dll
+        IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.lib
+)
 
 target_link_libraries(
         Game
@@ -459,6 +466,7 @@ target_link_libraries(
             mongoose
 
             glad::glad
+
             steam_api
             sdkencryptedappticket
             # WinSDK libs
