@@ -77,11 +77,11 @@ bool Steamworks_OnlineAchievements::Initialize()
 	}
 	//SteamUserStats()->ResetAllStats(true);
 
-	bool result = SteamUserStats()->RequestCurrentStats();
+	bool result = true; //SteamUserStats()->RequestCurrentStats();
 	DBG_ASSERT_STR(result, "[Steamworks] RequestCurrentStats failed.");
 
 
-	uint32 achievementCount = SteamUserStats()->GetNumAchievements();
+	uint32 achievementCount = 0; //SteamUserStats()->GetNumAchievements();
 	for (uint32 i = 0; i < achievementCount; i++)
 	{
 		const char* name = SteamUserStats()->GetAchievementName(i);

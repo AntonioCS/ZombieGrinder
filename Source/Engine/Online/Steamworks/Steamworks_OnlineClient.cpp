@@ -35,13 +35,15 @@ Steamworks_OnlineClient::~Steamworks_OnlineClient()
 	{
 		DBG_LOG("Terminating online client.");
 
-		SteamClient()->SetWarningMessageHook(NULL);
-		SteamAPI_Shutdown();
+		//SteamClient()->SetWarningMessageHook(NULL);
+		//SteamAPI_Shutdown();
 	}
 }
 
 bool Steamworks_OnlineClient::Init()
 {
+    return true;
+
 	DBG_LOG("Setting up online client");
 		
 	// Initialize steamworks! Wooooo
@@ -109,16 +111,16 @@ void Steamworks_OnlineClient::Tick(const FrameTime& time)
 
 void Steamworks_OnlineClient::Set_Notification_Corner(int corner)
 {
-	SteamUtils()->SetOverlayNotificationPosition((ENotificationPosition)corner);
+	//SteamUtils()->SetOverlayNotificationPosition((ENotificationPosition)corner);
 }
 
 void Steamworks_OnlineClient::Show_Invite_Dialog()
 {
-	SteamFriends()->ActivateGameOverlayInviteDialog(Steamworks_OnlineMatching::Get()->Get_Lobby_SteamID());
+	//SteamFriends()->ActivateGameOverlayInviteDialog(Steamworks_OnlineMatching::Get()->Get_Lobby_SteamID());
 }
 
 void Steamworks_OnlineClient::Show_Profile_Dialog(OnlineUser* user)
 {
-	Steamworks_OnlineUser* sw_user = dynamic_cast<Steamworks_OnlineUser*>(user);
-	SteamFriends()->ActivateGameOverlayToUser("steamid", sw_user->Get_SteamID());
+	//Steamworks_OnlineUser* sw_user = dynamic_cast<Steamworks_OnlineUser*>(user);
+	//SteamFriends()->ActivateGameOverlayToUser("steamid", sw_user->Get_SteamID());
 }
