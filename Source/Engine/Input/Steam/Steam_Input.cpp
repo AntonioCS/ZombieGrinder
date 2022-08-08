@@ -15,7 +15,7 @@ Steam_Input::Steam_Input()
 	m_keyboard_state = new Null_KeyboardState(0);
 
 #ifndef DEDICATED_SERVER_BUILD
-	if (!SteamController()->Init())
+	if (true) //!SteamController()->Init()) -- NO STEAM
 	{
 		DBG_LOG("[Steam Controller] Failed to initialize steam controller api.");
 	}
@@ -67,7 +67,7 @@ void Steam_Input::Scan_For_Devices()
 {
 #ifndef DEDICATED_SERVER_BUILD
 	ControllerHandle_t handles[STEAM_CONTROLLER_MAX_COUNT];
-	int controllers = SteamController()->GetConnectedControllers(handles);
+	int controllers = 0; //SteamController()->GetConnectedControllers(handles);
 
 	// Disconnect old controllers.
 	for (std::vector<Steam_JoystickState*>::iterator iter = m_joysticks.begin(); iter != m_joysticks.end(); iter++)

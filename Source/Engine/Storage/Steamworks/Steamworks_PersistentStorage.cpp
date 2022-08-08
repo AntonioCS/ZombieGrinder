@@ -69,42 +69,42 @@ bool Steamworks_PersistentStorage::File_Exists(const char* url)
 		DBG_LOG("[%i] Size=%i Url=%s", i, size, url);
 	}
 	*/
-	return SteamRemoteStorage()->FileExists(url);
+	return true; //SteamRemoteStorage()->FileExists(url);
 }
 
 int Steamworks_PersistentStorage::File_Size(const char* url)
 {
-	return SteamRemoteStorage()->GetFileSize(url);
+	return 0; //SteamRemoteStorage()->GetFileSize(url);
 }
 
 bool Steamworks_PersistentStorage::Write_File(const char* url, void* data, int size)
 {
-	{
-		MutexLock lock(m_pending_writes_mutex);
-
-		Steamworks_PersistentStoragePendingWrite pending_write;
-		pending_write.filename = url;
-		pending_write.buffer.Set((char*)data, size);
-
-		m_pending_writes.push_back(pending_write);
-	}
-
-	m_pending_writes_semaphore->Signal();
+//	{
+//		MutexLock lock(m_pending_writes_mutex);
+//
+//		Steamworks_PersistentStoragePendingWrite pending_write;
+//		pending_write.filename = url;
+//		pending_write.buffer.Set((char*)data, size);
+//
+//		m_pending_writes.push_back(pending_write);
+//	}
+//
+//	m_pending_writes_semaphore->Signal();
 
 	return true;
 }
 
 int Steamworks_PersistentStorage::Read_File(const char* url, void* data, int size)
 {
-	return SteamRemoteStorage()->FileRead(url, data, size);
+	return 0; //SteamRemoteStorage()->FileRead(url, data, size);
 }
 
 void Steamworks_PersistentStorage::Wait_For_Pending_Writes()
 {
-	m_pending_writes_semaphore->Signal();
-
-	while (m_pending_writes.size() > 0)
-	{
-		Platform::Get()->Sleep(0.01f);
-	}
+//	m_pending_writes_semaphore->Signal();
+//
+//	while (m_pending_writes.size() > 0)
+//	{
+//		Platform::Get()->Sleep(0.01f);
+//	}
 }
