@@ -53,11 +53,11 @@ bool Steamworks_OnlineInventory::Initialize()
 {
 	DBG_LOG("Setting up online inventory.");
 
-	SteamInventory()->GrantPromoItems(&m_promo_request_result);
-	SteamInventory()->GetAllItems(&m_full_request_result);
-
-	m_pending_results.push_back(m_full_request_result);
-	m_pending_results.push_back(m_promo_request_result);
+//	SteamInventory()->GrantPromoItems(&m_promo_request_result);
+//	SteamInventory()->GetAllItems(&m_full_request_result);
+//
+//	m_pending_results.push_back(m_full_request_result);
+//	m_pending_results.push_back(m_promo_request_result);
 
 	return true;
 }

@@ -49,22 +49,22 @@ void Steamworks_OnlineMods::Start_Favorites_Request()
 
 void Steamworks_OnlineMods::Request_Favorite_Page(int page)
 {
-	Steamworks_OnlinePlatform* platform = static_cast<Steamworks_OnlinePlatform*>(OnlinePlatform::Get());
+	//Steamworks_OnlinePlatform* platform = static_cast<Steamworks_OnlinePlatform*>(OnlinePlatform::Get());
 
 	DBG_LOG("[Steam Mods] Requesting favorites page %i.", page);
 
-	UGCQueryHandle_t handle = SteamUGC()->CreateQueryUserUGCRequest(
-		SteamUser()->GetSteamID().GetAccountID(),
-		k_EUserUGCList_Favorited,
-		k_EUGCMatchingUGCType_Items,
-		k_EUserUGCListSortOrder_VoteScoreDesc,
-		platform->Get_AppID(),
-		platform->Get_AppID(),
-		page
-	);
+//	UGCQueryHandle_t handle = SteamUGC()->CreateQueryUserUGCRequest(
+//		SteamUser()->GetSteamID().GetAccountID(),
+//		k_EUserUGCList_Favorited,
+//		k_EUGCMatchingUGCType_Items,
+//		k_EUserUGCListSortOrder_VoteScoreDesc,
+//		platform->Get_AppID(),
+//		platform->Get_AppID(),
+//		page
+//	);
 
-	m_favorite_request_call = SteamUGC()->SendQueryUGCRequest(handle);
-	m_favorite_request_call_result.Set(m_favorite_request_call, this, &Steamworks_OnlineMods::On_Recieve_Favorite_Page_Recieved);
+	m_favorite_request_call = 0; //SteamUGC()->SendQueryUGCRequest(handle);
+	//m_favorite_request_call_result.Set(m_favorite_request_call, this, &Steamworks_OnlineMods::On_Recieve_Favorite_Page_Recieved);
 
 	m_favorite_request_in_progress = true;
 	m_favorite_request_page = page;
@@ -79,7 +79,7 @@ void Steamworks_OnlineMods::On_Recieve_Favorite_Page_Recieved(SteamUGCQueryCompl
 		m_favorite_request_in_progress = false;
 		m_favorite_list = m_pending_favorite_list;
 
-		SteamUGC()->ReleaseQueryUGCRequest(param->m_handle);
+		//SteamUGC()->ReleaseQueryUGCRequest(param->m_handle);
 
 		return;
 	}
@@ -365,7 +365,7 @@ void Steamworks_OnlineMods::On_UGC_Download_Complete(RemoteStorageDownloadUGCRes
 bool Steamworks_OnlineMods::Initialize()
 {
 	PublishedFileId_t file_ids[256];
-	uint32 count = SteamUGC()->GetNumSubscribedItems();
+	uint32 count = 0; //SteamUGC()->GetNumSubscribedItems();
 
 	DBG_LOG("User is subscribed to %u files.", count);
 

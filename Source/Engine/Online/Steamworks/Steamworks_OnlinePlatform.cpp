@@ -108,11 +108,11 @@ bool Steamworks_OnlinePlatform::Init_Client()
 	// Login initial user! We can do this now!
 	if (m_initial_user == NULL)
 	{
-		m_initial_user = new Steamworks_OnlineUser(SteamUser()->GetSteamID(), 0, true);
-		m_users.push_back(m_initial_user);
+		//m_initial_user = new Steamworks_OnlineUser(SteamUser()->GetSteamID(), 0, true);
+		//m_users.push_back(m_initial_user);
 
 		// Some info please!
-		DBG_LOG("Logged in as steam user %s", m_initial_user->Get_Username().c_str());
+		DBG_LOG("Logged in as steam user %s", "FAKE NAME");//m_initial_user->Get_Username().c_str());
 	}
 
 	return true;
