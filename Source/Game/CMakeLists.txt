@@ -434,18 +434,20 @@ target_include_directories(
 )
 
 
-add_library(steam_api SHARED IMPORTED)
-add_library(sdkencryptedappticket SHARED IMPORTED)
+#add_library(steam_api SHARED IMPORTED)
+#add_library(sdkencryptedappticket SHARED IMPORTED)
+#
+#set_target_properties(
+#        steam_api PROPERTIES
+#        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.dll
+#        IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.lib
+#)
+#set_target_properties(sdkencryptedappticket PROPERTIES
+#        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.dll
+#        IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.lib
+#)
 
-set_target_properties(
-        steam_api PROPERTIES
-        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.dll
-        IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.lib
-)
-set_target_properties(sdkencryptedappticket PROPERTIES
-        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.dll
-        IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.lib
-)
+add_steam_libs()
 
 target_link_libraries(
         Game

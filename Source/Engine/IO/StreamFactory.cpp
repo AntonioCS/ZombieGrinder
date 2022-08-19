@@ -48,12 +48,12 @@ Stream* StreamFactory::Open(const char* url, StreamMode::Type mode)
 		Stream* result = factory->Try_Open(url, mode);
 		if (result != NULL)
 		{
-			//DBG_LOG("Successfully opened stream to: %s", url);
+			DBG_LOG("Successfully opened stream to: %s", url);
 			return result;
 		}
 	}
 	
-	//DBG_LOG("Failed to open stream to: %s", url);
+	DBG_LOG("Failed to open stream to: %s", url);
 	return NULL;
 }
 

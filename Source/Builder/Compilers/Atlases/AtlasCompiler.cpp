@@ -12,7 +12,16 @@
 
 #include "Engine/Resources//Compiled/Atlases/CompiledAtlas.h"
 
-#include "libsquish/squish.h"
+//#include "libsquish/squish.h"
+//This is defined in Source/Generic/Defines.h
+//which is force included
+#ifdef u8
+    #undef u8
+    #include "squish.h"
+    #define u8  unsigned char
+#elif
+    #include "squish.h"
+#endif
 
 #include "Engine/IO/PatchedBinaryStream.h"
 
