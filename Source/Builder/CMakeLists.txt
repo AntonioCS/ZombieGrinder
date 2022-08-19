@@ -55,22 +55,35 @@ add_library(sdkencryptedappticket SHARED IMPORTED)
 set_target_properties(
         steam_api
         PROPERTIES
-        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.dll
+        #IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.dll
         IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.lib
 )
 set_target_properties(
         sdkencryptedappticket
 
         PROPERTIES
-        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.dll
+        #IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.dll
         IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.lib
+)
+
+add_library(fmod SHARED IMPORTED)
+
+set_target_properties(
+        fmod
+        PROPERTIES
+        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/Source/Generic/ThirdParty/FMod/Library/fmod.dll
+        IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/Source/Generic/ThirdParty/FMod/Library/fmod_vc.lib
 )
 
 target_include_directories(
         Builder
-        PRIVATE ${CMAKE_SOURCE_DIR}/ThirdParty
-        PRIVATE ${CMAKE_SOURCE_DIR}/ThirdParty/libtheoraplayer/include
-        PRIVATE ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk
+        PRIVATE
+            ${CMAKE_SOURCE_DIR}/ThirdParty
+            ${CMAKE_SOURCE_DIR}/ThirdParty/libtheoraplayer/include
+
+            ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk
+
+            ${CMAKE_SOURCE_DIR}/Source/Generic/ThirdParty/FMod
 )
 
 target_link_libraries(
@@ -95,6 +108,7 @@ target_link_libraries(
 
             steam_api
             sdkencryptedappticket
+            fmod
 
             # WinSDK libs
             DbgHelp
@@ -109,11 +123,35 @@ target_link_libraries(
             Ws2_32
 )
 
+set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/Binary/Builder")
+
 set_target_properties(
         Builder
 
         PROPERTIES
             #ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
             #LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-            RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/Binary/Builder"
+            RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR}
+        #"${CMAKE_SOURCE_DIR}/Binary/Builder"
+)
+
+add_custom_command(
+        TARGET Builder POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/redistributable_bin/steam_api.dll
+            #https://stackoverflow.com/a/39284736/8715
+            #${OUTPUT_DIR}/$<CONFIG>/steam_api.dll
+            #${RUNTIME_OUTPUT_DIRECTORY}/$<CONFIG>/steam_api_1233333.dll
+            #${CMAKE_SOURCE_DIR}/Binary/Builder/$<CONFIG>/steam_api.dll
+            #$<TARGET_FILE_DIR:Builder> <-- use
+            #From cpp slack
+            $<TARGET_FILE_DIR:Builder>/steam_api.dll
+
+        COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_SOURCE_DIR}/steamworks_sdk_154/sdk/public/steam/lib/win32/sdkencryptedappticket.dll
+            $<TARGET_FILE_DIR:Builder>/sdkencryptedappticket.dll
+
+        COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_SOURCE_DIR}/Source/Generic/ThirdParty/FMod/Library/fmod.dll
+            $<TARGET_FILE_DIR:Builder>/fmod.dll
 )
