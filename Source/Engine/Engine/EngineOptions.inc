@@ -69,7 +69,7 @@ OPTION(IntOption,		steam_appid,						OptionFlags::NONE,  STEAM_APP_ID,						"App
 OPTION(IntOption,		steam_notification_corner,			OptionFlags::Saved, 3,									"Corner that notifications are shown when running steamworks overlay.")
 
 // Data setting
-OPTION(StringOption,	data_directory,						OptionFlags::NONE,  "../Data/",							"Directory that data is stored in.")
+OPTION(StringOption,	data_directory,						OptionFlags::NONE,  "../../../Data/",							"Directory that data is stored in.")
 
 // Matchmaking
 OPTION(IntOption,		matching_max_ping,					OptionFlags::Saved, 200,								"Maximum ping of servers looked for during matchmaking.")
